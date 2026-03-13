@@ -1,0 +1,48 @@
+#include <GL/glut.h>
+
+// Posição do quadrado
+float posX = 0.0f;
+float posY = 0.0f;
+float tamanho = 0.2f; // Tamanho do lado
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    // DESENHA O QUADRADO
+    glBegin(GL_QUADS);
+        glColor3f(0.0f, 0.5f, 1.0f); // Azul
+        glVertex2f(posX - tamanho, posY - tamanho);
+        glVertex2f(posX + tamanho, posY - tamanho);
+        glVertex2f(posX + tamanho, posY + tamanho);
+        glVertex2f(posX - tamanho, posY + tamanho);
+    glEnd();
+
+    glutSwapBuffers();
+}
+
+void teclado(unsigned char key, int x, int y) {
+    float velocidade = 0.05f;
+    switch (key) {
+        case 'w': case 'W': posY += velocidade; break;
+        case 's': case 'S': posY -= velocidade; break;
+        case 'a': case 'A': posX -= velocidade; break;
+        case 'd': case 'D': posX += velocidade; break;
+    }
+    glutPostRedisplay();
+}
+
+void init() {
+    glClearColor(0.2f, 0.2f, 0.2f, 1.0f); // Fundo cinza
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(800, 600);
+    glutCreateWindow("Exercicio 1: Quadrado WASD");
+    init();
+    glutDisplayFunc(display);
+    glutKeyboardFunc(teclado);
+    glutMainLoop();
+    return 0;
+}
