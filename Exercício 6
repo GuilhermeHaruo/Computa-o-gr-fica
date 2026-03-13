@@ -1,0 +1,67 @@
+#include <GL/glut.h>
+
+// Coordenadas do Quadrado 1 (WASD)
+float x1 = -0.4f, y1 = 0.0f;
+// Coordenadas do Quadrado 2 (IJKL)
+float x2 = 0.4f, y2 = 0.0f;
+
+float tamanho = 0.15f; // Tamanho dos quadrados
+
+// Desafio: Função genérica para desenhar quadrados
+void drawSquare(float x, float y, float r, float g, float b) {
+    glBegin(GL_QUADS);
+        glColor3f(r, g, b);
+        glVertex2f(x - tamanho, y - tamanho);
+        glVertex2f(x + tamanho, y - tamanho);
+        glVertex2f(x + tamanho, y + tamanho);
+        glVertex2f(x - tamanho, y + tamanho);
+    glEnd();
+}
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    // Desenha o primeiro quadrado (Vermelho)
+    drawSquare(x1, y1, 1.0f, 0.0f, 0.0f);
+    
+    // Desenha o segundo quadrado (Amarelo)
+    drawSquare(x2, y2, 1.0f, 1.0f, 0.0f);
+    
+    glutSwapBuffers();
+}
+
+void teclado(unsigned char key, int x, int y) {
+    float vel = 0.05f;
+    
+    switch (key) {
+        // Controle do Quadrado 1 (WASD)
+        case 'w': case 'W': if (y1 + tamanho < 1.0f)  y1 += vel; break;
+        case 's': case 'S': if (y1 - tamanho > -1.0f) y1 -= vel; break;
+        case 'a': case 'A': if (x1 - tamanho > -1.0f) x1 -= vel; break;
+        case 'd': case 'D': if (x1 + tamanho < 1.0f)  x1 += vel; break;
+        
+        // Controle do Quadrado 2 (IJKL)
+        case 'i': case 'I': if (y2 + tamanho < 1.0f)  y2 += vel; break;
+        case 'k': case 'K': if (y2 - tamanho > -1.0f) y2 -= vel; break;
+        case 'j': case 'J': if (x2 - tamanho > -1.0f) x2 -= vel; break;
+        case 'l': case 'L': if (x2 + tamanho < 1.0f)  x2 += vel; break;
+        
+        // Tecla ESC para sair
+        case 27: exit(0); break;
+    }
+    glutPostRedisplay();
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(800, 600);
+    glutCreateWindow("Exercicio 5: Quadrados Independentes");
+    
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glutDisplayFunc(display);
+    glutKeyboardFunc(teclado);
+    
+    glutMainLoop();
+    return 0;
+}
