@@ -67,128 +67,93 @@ Permitir que o usuário altere a cor do objeto usando as teclas numéricas.
 - `2` → Verde
 - `3` → Azul
 
-**Dica:**
-
 Criar variáveis de cor:
 
 ```cpp
 float r, g, b;
 
-# Exercício 5 — Movimento com Setas do Teclado (OpenGL)
+## Exercício 5 — Movimento com Setas do Teclado
 
-Este exercício faz parte das atividades da disciplina de **Computação Gráfica** do curso de **Sistemas de Informação**.
+Objetivo:
+Controlar o movimento do quadrado utilizando as setas do teclado.
 
-O programa cria uma janela gráfica utilizando **OpenGL** e permite mover um objeto na tela utilizando **as setas do teclado**.
+Controles:
 
----
+Seta para esquerda → move o quadrado para a esquerda
 
-## Tecnologias Utilizadas
+Seta para direita → move o quadrado para a direita
 
-- C++
-- OpenGL
-- GLUT / FreeGLUT
+Seta para cima → move o quadrado para cima
 
----
+Seta para baixo → move o quadrado para baixo
 
-## Objetivo do Exercício
+Dica:
+Utilize a função glutSpecialFunc() para capturar as teclas especiais do teclado.
 
-Implementar o controle de movimento de um objeto gráfico utilizando as **teclas especiais do teclado** (setas direcionais).
+Teclas utilizadas:
 
-Este exercício tem como objetivo reforçar conceitos de:
+GLUT_KEY_LEFT
 
-- Interação com o usuário
-- Captura de eventos de teclado
-- Atualização dinâmica de objetos na cena
+GLUT_KEY_RIGHT
 
----
+GLUT_KEY_UP
 
-## Funcionamento do Programa
+GLUT_KEY_DOWN
 
-O programa desenha um **quadrado na tela**, que pode ser movimentado utilizando as **setas do teclado**.
+Conceitos utilizados:
 
-### Controles
+Manipulação de teclas especiais
 
-| Tecla | Movimento |
-|------|------|
-| ⬅️ Seta Esquerda | Move para a esquerda |
-| ➡️ Seta Direita | Move para a direita |
-| ⬆️ Seta para Cima | Move para cima |
-| ⬇️ Seta para Baixo | Move para baixo |
+Atualização de posição de objetos
 
----
+Renderização de primitivas com OpenGL
 
-## Conceitos Utilizados
+## Exercício 6 — Múltiplos Objetos Independentes
 
-- Renderização de primitivas (`GL_QUADS`)
-- Manipulação de teclas especiais
-- Atualização de posição do objeto
-- Estrutura básica de um programa em OpenGL
+Objetivo:
+Adicionar dois quadrados com cores diferentes na tela e permitir que cada um seja movimentado de forma independente.
 
----
+Controles:
 
-## Função Utilizada
+Quadrado 1
 
-Para capturar as teclas especiais foi utilizada a função:
+W → mover para cima
 
-```cpp
-glutSpecialFunc()
+A → mover para esquerda
 
-# Exercício 6 — Múltiplos Objetos Independentes (OpenGL)
+S → mover para baixo
 
-Este exercício faz parte dos estudos da disciplina de **Computação Gráfica** do curso de **Sistemas de Informação**.
+D → mover para direita
 
-O programa cria uma janela gráfica utilizando **OpenGL** e renderiza **dois quadrados com cores diferentes**, que podem ser movimentados independentemente pelo teclado.
+Quadrado 2
 
----
+I → mover para cima
 
-## Tecnologias Utilizadas
+J → mover para esquerda
 
-- C++
-- OpenGL
-- GLUT / FreeGLUT
+K → mover para baixo
 
----
+L → mover para direita
 
-## Objetivo do Exercício
+Desafio extra:
+Criar uma função reutilizável para desenhar os quadrados, evitando repetição de código.
 
-Implementar múltiplos objetos na tela e permitir que cada um seja controlado por diferentes teclas do teclado.
+Exemplo de função:
 
-Este exercício reforça conceitos como:
+drawSquare(float x, float y, float r, float g, float b)
 
-- Manipulação de eventos do teclado
-- Controle independente de objetos
-- Organização e reutilização de código
-- Renderização de primitivas no OpenGL
+Essa função recebe:
 
----
+posição X
 
-## Funcionamento do Programa
+posição Y
 
-O programa desenha **dois quadrados na tela**, cada um com uma cor diferente.
+valores de cor (vermelho, verde e azul)
 
-Cada quadrado possui seu próprio conjunto de controles para movimentação.
+Conceitos utilizados:
 
-### Controles
+Renderização de múltiplos objetos
 
-| Objeto | Teclas de Movimento |
-|------|------|
-| Quadrado 1 | W A S D |
-| Quadrado 2 | I J K L |
+Controle independente de objetos
 
----
-
-## Conceitos Utilizados
-
-- Renderização de primitivas (`GL_QUADS`)
-- Manipulação de teclado com `glutKeyboardFunc()`
-- Atualização de posição de objetos
-- Organização do código em funções reutilizáveis
-
----
-
-## Função Reutilizável
-
-Para evitar repetição de código, foi criada uma função para desenhar os quadrados:
-
-```cpp
-drawSquare(float x, float y, float r, float g, float b);
+Organização e reutilização de código em funções
