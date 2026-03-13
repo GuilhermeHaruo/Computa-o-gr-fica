@@ -1,0 +1,50 @@
+#include <GL/glut.h>
+
+float posX = 0.0f, posY = 0.0f;
+float tamanho = 0.2f; // Metade do lado do quadrado
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    glBegin(GL_QUADS);
+        glColor3f(0.0f, 0.8f, 0.3f); // Verde
+        glVertex2f(posX - tamanho, posY - tamanho);
+        glVertex2f(posX + tamanho, posY - tamanho);
+        glVertex2f(posX + tamanho, posY + tamanho);
+        glVertex2f(posX - tamanho, posY + tamanho);
+    glEnd();
+
+    glutSwapBuffers();
+}
+
+void teclado(unsigned char key, int x, int y) {
+    float vel = 0.05f;
+    switch (key) {
+        // Movimento com checagem de limite (-1.0 a 1.0)
+        case 'w': case 'W': 
+            if (posY + tamanho + vel <= 1.0f) posY += vel; 
+            break;
+        case 's': case 'S': 
+            if (posY - tamanho - vel >= -1.0f) posY -= vel; 
+            break;
+        case 'a': case 'A': 
+            if (posX - tamanho - vel >= -1.0f) posX -= vel; 
+            break;
+        case 'd': case 'D': 
+            if (posX + tamanho + vel <= 1.0f) posX += vel; 
+            break;
+    }
+    glutPostRedisplay();
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(800, 600);
+    glutCreateWindow("Exercicio 2: Quadrado com Limites");
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glutDisplayFunc(display);
+    glutKeyboardFunc(teclado);
+    glutMainLoop();
+    return 0;
+}
