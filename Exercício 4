@@ -1,0 +1,51 @@
+#include <GL/glut.h>
+
+float posX = 0.0f, posY = 0.0f;
+float tamanho = 0.2f;
+
+// Variáveis para controlar a cor (R, G, B)
+// Começa branco (1, 1, 1)
+float red = 1.0f, green = 1.0f, blue = 1.0f;
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    
+    glBegin(GL_QUADS);
+        glColor3f(red, green, blue); // Usa as variáveis de cor
+        glVertex2f(posX - tamanho, posY - tamanho);
+        glVertex2f(posX + tamanho, posY - tamanho);
+        glVertex2f(posX + tamanho, posY + tamanho);
+        glVertex2f(posX - tamanho, posY + tamanho);
+    glEnd();
+
+    glutSwapBuffers();
+}
+
+void teclado(unsigned char key, int x, int y) {
+    float vel = 0.05f;
+    switch (key) {
+        // MOVIMENTAÇÃO (WASD)
+        case 'w': case 'W': if (posY + tamanho + vel <= 1.0f) posY += vel; break;
+        case 's': case 'S': if (posY - tamanho - vel >= -1.0f) posY -= vel; break;
+        case 'a': case 'A': if (posX - tamanho - vel >= -1.0f) posX -= vel; break;
+        case 'd': case 'D': if (posX + tamanho + vel <= 1.0f) posX += vel; break;
+        
+        // MUDANÇA DE CORES (1, 2, 3)
+        case '1': red = 1.0f; green = 0.0f; blue = 0.0f; break; // Vermelho
+        case '2': red = 0.0f; green = 1.0f; blue = 0.0f; break; // Verde
+        case '3': red = 0.0f; green = 0.0f; blue = 1.0f; break; // Azul
+    }
+    glutPostRedisplay();
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+    glutInitWindowSize(800, 600);
+    glutCreateWindow("Exercicio 3: Quadrado Colorido");
+    glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+    glutDisplayFunc(display);
+    glutKeyboardFunc(teclado);
+    glutMainLoop();
+    return 0;
+}
