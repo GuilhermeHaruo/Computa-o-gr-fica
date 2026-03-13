@@ -74,6 +74,65 @@ Criar variáveis de cor:
 ```cpp
 float r, g, b;
 
+# Exercício 5 — Movimento com Setas do Teclado (OpenGL)
+
+Este exercício faz parte das atividades da disciplina de **Computação Gráfica** do curso de **Sistemas de Informação**.
+
+O programa cria uma janela gráfica utilizando **OpenGL** e permite mover um objeto na tela utilizando **as setas do teclado**.
+
+---
+
+## Tecnologias Utilizadas
+
+- C++
+- OpenGL
+- GLUT / FreeGLUT
+
+---
+
+## Objetivo do Exercício
+
+Implementar o controle de movimento de um objeto gráfico utilizando as **teclas especiais do teclado** (setas direcionais).
+
+Este exercício tem como objetivo reforçar conceitos de:
+
+- Interação com o usuário
+- Captura de eventos de teclado
+- Atualização dinâmica de objetos na cena
+
+---
+
+## Funcionamento do Programa
+
+O programa desenha um **quadrado na tela**, que pode ser movimentado utilizando as **setas do teclado**.
+
+### Controles
+
+| Tecla | Movimento |
+|------|------|
+| ⬅️ Seta Esquerda | Move para a esquerda |
+| ➡️ Seta Direita | Move para a direita |
+| ⬆️ Seta para Cima | Move para cima |
+| ⬇️ Seta para Baixo | Move para baixo |
+
+---
+
+## Conceitos Utilizados
+
+- Renderização de primitivas (`GL_QUADS`)
+- Manipulação de teclas especiais
+- Atualização de posição do objeto
+- Estrutura básica de um programa em OpenGL
+
+---
+
+## Função Utilizada
+
+Para capturar as teclas especiais foi utilizada a função:
+
+```cpp
+glutSpecialFunc()
+
 # Exercício 6 — Múltiplos Objetos Independentes (OpenGL)
 
 Este exercício faz parte dos estudos da disciplina de **Computação Gráfica** do curso de **Sistemas de Informação**.
