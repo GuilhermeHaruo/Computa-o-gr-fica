@@ -69,9 +69,6 @@ Permitir que o usuário altere a cor do objeto usando as teclas numéricas.
 
 Criar variáveis de cor:
 
-```cpp
-float r, g, b;
-
 ## Exercício 5 — Movimento com Setas do Teclado
 
 Objetivo:
